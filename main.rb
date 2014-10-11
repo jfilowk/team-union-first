@@ -1,7 +1,10 @@
 require 'json'
 require 'sinatra'
-require "data-mapper"
+require "data_mapper"
+require "dm-types"
 require "dm-migrations"
+require 'dm-timestamps'
+
 
 configure :development do
   DataMapper::Logger.new($stdout, :debug)

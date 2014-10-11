@@ -5,8 +5,8 @@ class Team
   property :firstName, String
   property :lastName, String
   property :number, Integer
-  property :modified_at, Date
-  property :created_at, Date
+  property :updated_at, DateTime
+  property :created_at, DateTime
   
   belongs_to :team
 
