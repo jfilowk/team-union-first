@@ -11,7 +11,7 @@ helpers do
 end
 
 get '/api/player/:id' do
-  context_type :json
+  content_type :json
   
   if player = Player.get(params[:id])
     player.to_json
@@ -21,13 +21,13 @@ get '/api/player/:id' do
 end
 
 post '/api/player/new' do
-  context_type :json
+  content_type :json
   
-  player_json = JSON.parser body.request.read  
+  player_json = JSON.parse request.body.read  
   player = Player.new(player_json)
   
   if player.save
-    coach = Coach.last
+    player = Player.last
     status 201
     player.to_json
   else
@@ -36,8 +36,8 @@ post '/api/player/new' do
 end
 
 put '/api/player/edit' do
-  context_type :json
-  player_json = JSON.parser request.body.read
+  content_type :json
+  player_json = JSON.parse request.body.read
   
   player ||= Player.get(player_json["id"]) || halt(404)
   halp 500 unless player.update(
@@ -50,7 +50,7 @@ put '/api/player/edit' do
 end
 
 delete '/api/player/:id' do
-  context_type :json
+  content_type :json
   
   if player = Player.get(params[:id])
     player.destroy!

@@ -11,7 +11,7 @@ helpers do
 end
 
 get '/api/team/:id' do
-  context_type :json
+  content_type :json
   
   if team = Team.get(params[:id])
     team.to_json
@@ -21,7 +21,7 @@ get '/api/team/:id' do
 end
 
 post '/api/team/new' do
-  context_type :json
+  content_type :json
   
   team_json = JSON.parse request.body.read
   team = Team.new(team_json)
@@ -36,7 +36,7 @@ post '/api/team/new' do
 end
 
 put '/api/team/edit' do
-  context_type :json
+  content_type :json
   team_json = JSON.parse body.request.read
   
   team ||= Team.get(team_json["id"]) || halt(404)
@@ -48,7 +48,7 @@ put '/api/team/edit' do
 end
 
 delete '/api/team/:id' do
-  context_type :json
+  content_type :json
   
   if team = Team.get(params[:id])
     team.destroy!
