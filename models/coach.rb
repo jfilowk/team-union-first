@@ -5,8 +5,8 @@ class Coach
   property :firstName, String
   property :lastName, String
   property :password, String
-  property :created_at, Date
+  property :updated_at, DateTime
+  property :created_at, DateTime
   
   has n, :teams
-
 end

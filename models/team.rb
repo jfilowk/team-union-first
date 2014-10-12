@@ -3,8 +3,8 @@ class Team
   include DataMapper::Resource
   property :id, Serial
   property :name, String
-  property :modified_at, Date
-  property :created_at, Date
+  property :updated_at, DateTime
+  property :created_at, DateTime
   
   has n, :players
   belongs_to :coach
