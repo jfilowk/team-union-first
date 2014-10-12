@@ -47,7 +47,7 @@ put '/api/team/edit' do
   
 end
 
-delete 'api/team/:id' do
+delete '/api/team/:id' do
   context_type :json
   
   if team = Team.get(params[:id])
