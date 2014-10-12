@@ -40,7 +40,7 @@ put '/api/player/edit' do
   player_json = JSON.parser request.body.read
   
   player ||= Player.get(player_json["id"]) || halt(404)
-  halp 500 unless player.update (
+  halp 500 unless player.update(
   firstName: player_json['firstName'],
   lastName: player_json['lastName'],
   number: player_json['number']

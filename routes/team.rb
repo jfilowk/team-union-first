@@ -40,7 +40,7 @@ put '/api/team/edit' do
   team_json = JSON.parse body.request.read
   
   team ||= Team.get(team_json["id"]) || halt(404)
-    halp 500 unless coach.update (
+    halp 500 unless team.update(
       name: team_json['name']
     )  
   team.to_json

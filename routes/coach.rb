@@ -41,7 +41,7 @@ put '/api/coach/edit' do
   
   coach ||= Coach.get(coach_json["id"]) || halt(404)
     halp 500 unless coach.update(
-      firstName:    coach_json['firstName'],
+      firstName: coach_json['firstName'],
       lastName: coach_json['lastName'],
       password: coach_json['password']
     )
