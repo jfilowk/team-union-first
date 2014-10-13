@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class Team
+class Player
   include DataMapper::Resource
   property :id, Serial
   property :firstName, String

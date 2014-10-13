@@ -39,16 +39,13 @@ put '/api/coach/edit' do
   content_type :json
   coach_json = JSON.parse request.body.read
   
-  if coach = Coach.get(coach_json["id"])
-    coach = Coach.update(
-    firstName: coach_json["firstName"],
-    lastName: coach_json["lastName"],
-    password: coach_json["password"]
+  coach ||= Coach.get(coach_json["id"]) || halt(404)
+    halp 500 unless coach.update(
+      email: coach_json['email'],
+      nickname: coach_json['nickname'],
+      password: coach_json['password']
     )
     coach.to_json
-  else
-    json_status 404, "Not Found"
-  end
 
 end
 
